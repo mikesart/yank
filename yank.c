@@ -454,11 +454,18 @@ main(int argc, char *argv[])
 		errx(1, "invalid regular expression");
 
 	/* Ensure space for yank command and null terminator. */
-	if ((yankargv = calloc(argc + 2, sizeof(char *))) == NULL)
+	if ((yankargv = calloc(argc + 3, sizeof(char *))) == NULL)
 		err(1, NULL);
-	yankargv[0] = YANKCMD;
-	for (i = 0; i < argc; i++)
-		yankargv[i] = argv[i];
+	if (argc)
+	{
+		for (i = 0; i < argc; i++)
+			yankargv[i] = argv[i];
+	}
+	else
+	{
+		yankargv[0] = YANKCMD;
+		yankargv[1] = YANKCMD2;
+	}
 
 	input();
 	tsetup();

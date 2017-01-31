@@ -1,6 +1,7 @@
 VERSION=	0.8.0
 
 YANKCMD=	xsel
+YANKCMD2=	--clipboard
 
 PREFIX=		/usr/local
 MANPREFIX=	${PREFIX}/share/man
@@ -9,7 +10,7 @@ INSTALL_PROGRAM=	install -s -m 0755
 INSTALL_MAN=		install -m 0644
 
 CFLAGS+=	-pedantic -Wall -Werror -Wextra
-CPPFLAGS+=	-DVERSION=\"${VERSION}\" -DYANKCMD=\"${YANKCMD}\"
+CPPFLAGS+=	-DVERSION=\"${VERSION}\" -DYANKCMD=\"${YANKCMD}\" -DYANKCMD2=\"${YANKCMD2}\"
 
 all: yank
 
